@@ -198,6 +198,9 @@ samtools tview SRR2584863_REL606.sorted.bam REL606.fasta
 
 <img width="1899" height="979" alt="image" src="https://github.com/user-attachments/assets/f420548e-5e7e-447e-a067-778501250908" />
 
+
+Interpitation:
+
 ```
  Genomic Position
       1      11      21      31      41      51      61
