@@ -26,3 +26,17 @@ conda install -c bioconda bwa
 conda install -c bioconda samtools
 conda install -c bioconda bcftools
 ```
+
+## Step 1: Download Sequencing Data
+Download the LTEE E. coli sequencing dataset.
+```bash
+prefetch SRR2584863
+fasterq-dump --split-files SRR2584863
+```
+Files generated:
+
+```
+SRR2584863_1.fastq
+SRR2584863_2.fastq
+```
+
