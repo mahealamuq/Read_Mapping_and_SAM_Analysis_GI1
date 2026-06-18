@@ -40,3 +40,9 @@ SRR2584863_1.fastq
 SRR2584863_2.fastq
 ```
 
+## Step 2: Convert FASTQ to FASTA
+
+```bash
+seqtk seq -A SRR2584863_1.fastq > SRR2584863_1.fsa
+seqtk seq -A SRR2584863_2.fastq > SRR2584863_2.fsa
+```
