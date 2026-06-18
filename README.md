@@ -187,6 +187,18 @@ samtools index SRR2584863_REL606.sorted.bam
 ```bash
 samtools flagstat SRR2584863_REL606.sorted.bam
 ```
+
+**Visual Inspection of Read Alignments Using "SAMtools tview"**
+
+samtools tview provides a rapid terminal-based method for validating read alignments and variant calls. By comparing aligned reads to the reference genome, potential SNPs, insertions, deletions, and coverage patterns can be visually inspected before downstream analysis. This step serves as an important quality-control procedure during genome resequencing and variant discovery workflows.
+
+```bash
+samtools tview SRR2584863_REL606.sorted.bam REL606.fasta
+```
+
+<img width="1899" height="979" alt="image" src="https://github.com/user-attachments/assets/f420548e-5e7e-447e-a067-778501250908" />
+
+
 ## Step 14: CIGAR String Analysis
 View CIGAR strings:
 
@@ -264,3 +276,93 @@ bcftools call -mv -Ov \
 ```
 grep -v "^#" SRR2584863_REL606_variants.vcf | head
 ```
+
+<img width="1911" height="329" alt="image" src="https://github.com/user-attachments/assets/f551061a-6dea-4805-9674-a8ccbd0f4251" />
+
+Let's decode the first line:
+
+```
+CP000819.1    9972    .    T    G    225.417    .
+```
+
+The columns mean:
+
+| Column | Value      | Meaning                |
+| ------ | ---------- | ---------------------- |
+| CHROM  | CP000819.1 | Reference chromosome   |
+| POS    | 9972       | Position in genome     |
+| ID     | .          | No variant ID assigned |
+| REF    | T          | Reference base         |
+| ALT    | G          | Variant base           |
+| QUAL   | 225.417    | Confidence score       |
+| FILTER | .          | Passed filtering       |
+
+**Interpretation**
+
+At position 9972:
+```
+Reference genome: T
+Sample genome:    G
+```
+
+This is a single nucleotide variant (SNV).
+
+**INFO field**
+
+Immediately after FILTER you see:
+
+```
+DP=107
+VDB=0.988197
+MQ=60
+AC=2
+AN=2
+```
+
+Important values:
+
+| Field | Meaning                |
+| ----- | ---------------------- |
+| DP    | Read depth             |
+| MQ    | Mapping quality        |
+| AC    | Alternate allele count |
+| AN    | Total alleles          |
+
+Example:
+
+```
+DP=107
+```
+means:
+
+```
+107 reads cover this position
+```
+which is very strong evidence.
+
+**FORMAT field**
+
+Near the end:
+
+```
+GT:PL
+1/1:255,255,0
+```
+| GT  | Meaning   |
+| --- | --------- |
+| 0/0 | Reference |
+| 0/1 | Mixed     |
+| 1/1 | Variant   |
+
+Your first SNP:
+
+```
+1/1
+```
+
+means:
+
+```
+100% of reads support the variant
+```
+
