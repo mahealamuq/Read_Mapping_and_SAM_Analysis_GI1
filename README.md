@@ -198,6 +198,34 @@ samtools tview SRR2584863_REL606.sorted.bam REL606.fasta
 
 <img width="1899" height="979" alt="image" src="https://github.com/user-attachments/assets/f420548e-5e7e-447e-a067-778501250908" />
 
+```
+ Genomic Position
+      1      11      21      31      41      51      61
+      |-------|-------|-------|-------|-------|-------|
+
+ Reference Genome
+ AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAA...
+
+ Read Alignments
+ .....................................................
+ .....................................................
+ .....................................................
+
+ SNP / Mismatch
+ ..........................A..........................
+ .......................C.............................
+ ................................G....................
+
+ Forward Strand Reads
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ Reverse Strand Reads
+ /////////////////////////////////////////////////////
+
+ Read Coverage
+ ████████████████████████████████████████████████████
+ (Many overlapping reads = high coverage)
+```
 
 ## Step 14: CIGAR String Analysis
 View CIGAR strings:
