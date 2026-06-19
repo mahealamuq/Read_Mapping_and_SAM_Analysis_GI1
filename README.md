@@ -437,4 +437,26 @@ means:
 ```
 100% of reads support the variant
 ```
+## IGV Validation of Variant Calls
+
+After variant calling with BCFtools, the identified variants were manually inspected using IGV (Integrative Genomics Viewer).
+
+One high-confidence SNV was detected at genomic position 9,972 of the REL606 reference genome:
+
+| Chromosome | Position | Reference | Alternative | Quality |
+|------------|----------|-----------|-------------|---------|
+| CP000819.1 | 9972 | T | G | 225.417 |
+
+### IGV Visualization
+
+<img width="1908" height="906" alt="igv_snapshot" src="https://github.com/user-attachments/assets/e5935d79-24e3-4b0f-b8c6-bc71883265bd" />
+
+
+**Figure:** Visualization of the SNV at position 9,972 in IGV. The coverage track indicates approximately 120× sequencing depth across the region. The reference genome contains a thymine (T) at this position, whereas the aligned sequencing reads consistently support a guanine (G) allele.
+
+### Interpretation
+
+The variant identified by BCFtools was confirmed through visual inspection in IGV. The alternative allele (G) is supported by multiple independent sequencing reads and occurs at high read coverage. Because the same nucleotide substitution is observed consistently across the read pileup, the variant is unlikely to represent a sequencing error and is considered a genuine single nucleotide variant (SNV) relative to the REL606 reference genome.
+
+This example demonstrates the importance of validating computational variant calls using read pileup visualization.
 
