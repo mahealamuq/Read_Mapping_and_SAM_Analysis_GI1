@@ -230,6 +230,47 @@ Interpitation:
  (Many overlapping reads = high coverage)
 ```
 
+**IGV Read Alignment Visualization**
+
+Download IGV:
+
+
+```bash
+wget https://data.broadinstitute.org/igv/projects/downloads/2.17/IGV_Linux_2.17.4_WithJava.zip
+unzip IGV_Linux_2.17.4_WithJava.zip
+```
+
+Launch IGV:
+
+```
+cd IGV_Linux_2.17.4
+./igv.sh
+```
+
+Load Files in IGV:
+
+- Load from File
+- SRR2584863_REL606.sorted.bam
+  
+IGV automatically loads:
+- SRR2584863_REL606.sorted.bam.bai
+
+<img width="1908" height="906" alt="igv_snapshot" src="https://github.com/user-attachments/assets/eca08fa3-83d8-408c-b3fa-7fa18e36f572" />
+ 
+The figure below shows sequencing reads aligned to the REL606 reference genome in IGV. Each horizontal bar represents an individual sequencing read, while the coverage track at the top shows the number of reads mapped at each genomic position.
+
+| Colour                   | Meaning                                         |
+| ------------------------ | ----------------------------------------------- |
+| Grey                     | Bases match the reference genome                |
+| Red                      | Thymine (T) mismatch relative to the reference  |
+| Blue                     | Cytosine (C) mismatch relative to the reference |
+| Green                    | Adenine (A) mismatch relative to the reference  |
+| Orange/Brown             | Guanine (G) mismatch relative to the reference  |
+| White gaps               | Deletions relative to the reference             |
+| Purple markers           | Insertions relative to the reference            |
+| Coverage histogram (top) | Read depth across the genomic region            |
+
+
 ## Step 14: CIGAR String Analysis
 View CIGAR strings:
 
