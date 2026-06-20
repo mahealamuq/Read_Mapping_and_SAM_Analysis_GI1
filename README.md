@@ -460,3 +460,57 @@ The variant identified by BCFtools was confirmed through visual inspection in IG
 
 This example demonstrates the importance of validating computational variant calls using read pileup visualization.
 
+---
+
+## Variant Calling Results
+
+Variants were identified using **BCFtools** after aligning SRR2584863 sequencing reads to the *Escherichia coli* REL606 reference genome.
+
+### Extract Variant Summary
+
+The following command was used to extract the genomic position, reference allele, alternative allele, and quality score from the VCF file:
+
+```bash
+cut -f2,4-6 SRR2584863_REL606_variants.vcf > SRR2584863_REL606_results.vcf
+```
+
+To display the first variant calls:
+
+```bash
+grep -v "^#" SRR2584863_REL606_results.vcf | head
+```
+
+### Example Variant Calls
+
+| Position | Reference Allele | Alternative Allele | Quality Score |
+|-----------|-----------------|-------------------|---------------|
+| 9972 | T | G | 225.417 |
+| 263235 | G | T | 228.115 |
+| 281923 | G | T | 225.417 |
+| 377000 | T | G | 228.284 |
+| 433359 | CTTTTTTT | CTTTTTTTT | 228.402 |
+| 473901 | CCGC | CCGCGC | 228.388 |
+| 648692 | C | T | 225.417 |
+| 716832 | T | G | 3.594 |
+| 1331794 | C | A | 225.422 |
+
+### Interpretation
+
+The majority of detected variants have quality scores greater than 200, indicating high-confidence variant calls. Both single nucleotide variants (SNVs) and insertion/deletion events (indels) were identified.
+
+Examples include:
+
+- **Position 9972:** T → G substitution
+- **Position 263235:** G → T substitution
+- **Position 433359:** insertion of one thymine nucleotide
+- **Position 473901:** insertion of two nucleotides (GC)
+
+The variant at position **9972** was further validated using **IGV (Integrative Genomics Viewer)**. Visual inspection of the read pileup confirmed that multiple sequencing reads supported the alternative G allele, demonstrating that the variant is unlikely to be a sequencing artefact.
+
+### IGV Validation
+
+![IGV Variant Validation](images/igv_snv_9972.png)
+
+**Figure:** IGV visualization of the SNV at position 9,972. The reference genome contains a thymine (T), while the aligned sequencing reads consistently support a guanine (G) allele. High read coverage (~120×) and agreement among multiple reads provide strong evidence that this is a genuine genomic variant.
+
+---
