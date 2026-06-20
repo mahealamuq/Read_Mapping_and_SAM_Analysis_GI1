@@ -507,10 +507,4 @@ Examples include:
 
 The variant at position **9972** was further validated using **IGV (Integrative Genomics Viewer)**. Visual inspection of the read pileup confirmed that multiple sequencing reads supported the alternative G allele, demonstrating that the variant is unlikely to be a sequencing artefact.
 
-### IGV Validation
-
-![IGV Variant Validation](images/igv_snv_9972.png)
-
-**Figure:** IGV visualization of the SNV at position 9,972. The reference genome contains a thymine (T), while the aligned sequencing reads consistently support a guanine (G) allele. High read coverage (~120×) and agreement among multiple reads provide strong evidence that this is a genuine genomic variant.
-
 ---
